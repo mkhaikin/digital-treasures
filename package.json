@@ -1,0 +1,26 @@
+{
+  "name": "digital-treasures",
+  "version": "1.0.0",
+  "description": "PERN stack OMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkhaikin/digital-treasures.git"
+  },
+  "keywords": [
+    "Postgres",
+    "Express",
+    "React",
+    "Node",
+    "OMS"
+  ],
+  "author": "Michael Khaikin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkhaikin/digital-treasures/issues"
+  },
+  "homepage": "https://github.com/mkhaikin/digital-treasures#readme"
+}
