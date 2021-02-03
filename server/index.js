@@ -25,6 +25,14 @@ app.post('/admin/employees', async (req,res) =>{
 });
 // Get all employees
 // Get all customers
+app.get('/customers', async (req,res) => {
+    try {
+        const allCustomers = await pool.query('SELECT * FROM customers');
+        res.json(allCustomers.rows)
+      } catch (err) {
+          console.error(err.message);
+      }
+});
 // Create customer
 app.post('/customers', async (req,res) =>{
     try {
