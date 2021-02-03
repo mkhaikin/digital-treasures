@@ -64,7 +64,16 @@ app.post('/customers', async (req,res) =>{
         console.error(err.message);
     }
 });
-// Get all orders
+// Get customer by id
+app.get('/customers/:id', async(req,res) => {
+    try {
+        const {id} = req.params;
+        const customer = await pool.query('SELECT * FROM customers WHERE id = $1', [id]);
+        res.json(customer.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 
 app.listen(5000, () => {
