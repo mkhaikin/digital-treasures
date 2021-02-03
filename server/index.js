@@ -31,6 +31,16 @@ app.get('/admin/employees', async (req,res) => {
           console.error(err.message);
       }
 });
+// Get employee by id
+app.get('/admin/employees/:id', async(req,res) => {
+    try {
+        const {id} = req.params;
+        const user = await pool.query('SELECT * FROM employees WHERE id = $1', [id]);
+        res.json(user.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 // Get all customers
 app.get('/customers', async (req,res) => {
     try {
