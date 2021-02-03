@@ -1,3 +1,6 @@
+# Custom files
+db.js
+
 # Logs
 logs
 *.log
