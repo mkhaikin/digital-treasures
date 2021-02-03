@@ -10,19 +10,6 @@ app.use(express.json());
 // ROUTES
 
 // Get all employees
-app.post('/admin/employees', async (req,res) =>{
-    try {
-        const { first_name, last_name, role, email, password} = req.body;
-        const newUser = await pool.query(
-            'INSERT INTO employees (first_name, last_name, role, email, password) VALUES($1,$2,$3,$4,$5) RETURNING *',
-            [first_name, last_name, role, email, password]
-        );
-        console.log('row was inserted. new employee created');
-        res.json(newUser.rows[0]);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
 
 // Get all customers
 // Create customer
