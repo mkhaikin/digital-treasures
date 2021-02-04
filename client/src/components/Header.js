@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <Fragment>
             <div className="container-fluid header">
-                <h4>Header</h4>
+                <h4>Digital Treasures OMS</h4>
             </div>
         </Fragment>
     );
