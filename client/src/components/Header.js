@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const Header = () => {
-    return <h1>Header</h1>;
+    return (
+        <Fragment>
+            <div className="container-fluid footer">
+                <h4>Header</h4>
+            </div>
+        </Fragment>
+    );
 };
 
 export default Header;
