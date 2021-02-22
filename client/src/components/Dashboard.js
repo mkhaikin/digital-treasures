@@ -40,7 +40,7 @@ const Dashboards = () => {
                 */}
                 {customers.map(customer => (
                     <tr key={customer.todo_id}>
-                        <td>{customer.first_name}</td>
+                        <td>{customer.first_name+' '+customer.last_name}</td>
                         <td>{customer.address}</td>
                         <td>{customer.city}</td>
                         <td>{customer.email}</td>
