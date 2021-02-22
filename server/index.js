@@ -85,11 +85,21 @@ app.get('/orders', async (req,res) => {
       }
 });
 
-
-
-//  Foreign KEY
-// INSERT INTO articles( article_name, article_content, category_id, img, url ) 
-// VALUES( ?, ?, ( SELECT category_id FROM categories WHERE categories.category_id = ? ), ?, ?) 
+// Insert order
+app.post('/orders', async (req,res) =>{
+    try {
+        const { note, estimated_price, is_guaranteed } = req.body;
+        const createrBy = 'mike@email.com';
+        const newOrder = await pool.query(
+            'INSERT INTO orders (note, estimated_price, is_guaranteed, created_by, customer_id, status_id) VALUES($1,$2,$3,(SELECT id FROM employees WHERE (email = $4)), 1, 1 ) RETURNING *',
+            [note, estimated_price, is_guaranteed,createrBy]
+        );
+        console.log('row was inserted. new order created');
+        res.json(newOrder.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 app.listen(5000, () => {
     console.log("server has started on PORT 5000");
@@ -101,3 +111,8 @@ app.listen(5000, () => {
 // 	   1,
 // 	(SELECT id FROM status WHERE (abbr = 'NS') OR (status_name = 'Not Started'))
 // 	  )
+
+
+// inserting using Foreign KEY temp.
+// INSERT INTO articles( article_name, article_content, category_id, img, url ) 
+// VALUES( ?, ?, ( SELECT category_id FROM categories WHERE categories.category_id = ? ), ?, ?) 
