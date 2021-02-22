@@ -100,10 +100,11 @@ app.get('/customers/:id', async(req,res) => {
 // Update customer by id
 app.put('/customers/:id', async (req,res) =>{
     try {
+        const {id} = req.params;
         const { address, city, email, first_name, last_name, phone, postal_code, province, notes } = req.body;
         const updatedCustomer = await pool.query(
-            'UPDATE customers SET address = $1, city = $2, email = $3, first_name = $4, last_name = $5, phone = $6, postal_code = $7, province = $8, notes = $9 RETURNING *',
-            [address, city, email, first_name, last_name, phone, postal_code, province, notes]
+            'UPDATE customers SET address = $1, city = $2, email = $3, first_name = $4, last_name = $5, phone = $6, postal_code = $7, province = $8, notes = $9 WHERE id = $10 RETURNING *',
+            [address, city, email, first_name, last_name, phone, postal_code, province, notes, id]
         );
         console.log('Success, customer updated!');
         res.json(updatedCustomer.rows[0]);
