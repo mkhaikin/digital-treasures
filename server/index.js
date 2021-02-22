@@ -41,6 +41,22 @@ app.get('/admin/employees/:id', async(req,res) => {
         console.error(err.message);
     }
 });
+
+// Update employee
+app.put('/admin/employees/:id', async (req,res) =>{
+    try {
+        const { first_name, last_name, role, email, password} = req.body;
+        const updatedUser = await pool.query(
+            'INSERT INTO employees (first_name, last_name, role, email, password) VALUES($1,$2,$3,$4,$5) RETURNING *',
+            [first_name, last_name, role, email, password]
+        );
+        console.log('Success, employee updated!');
+        res.json(updatedUser.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 // Get all customers
 app.get('/customers', async (req,res) => {
     try {
@@ -100,6 +116,8 @@ app.post('/orders', async (req,res) =>{
         console.error(err.message);
     }
 });
+
+
 
 app.listen(5000, () => {
     console.log("server has started on PORT 5000");
