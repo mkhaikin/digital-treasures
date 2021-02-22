@@ -102,7 +102,7 @@ app.put('/customers/:id', async (req,res) =>{
     try {
         const { address, city, email, first_name, last_name, phone, postal_code, province, notes } = req.body;
         const updatedCustomer = await pool.query(
-            'UPDATE customers (address, city, email, first_name, last_name, phone, postal_code, province, notes) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
+            'UPDATE customers SET address = $1, city = $2, email = $3, first_name = $4, last_name = $5, phone = $6, postal_code = $7, province = $8, notes = $9 RETURNING *',
             [address, city, email, first_name, last_name, phone, postal_code, province, notes]
         );
         console.log('Success, customer updated!');
