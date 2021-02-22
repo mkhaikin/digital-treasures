@@ -75,7 +75,29 @@ app.get('/customers/:id', async(req,res) => {
     }
 });
 
+// Get all Orders
+app.get('/orders', async (req,res) => {
+    try {
+        const allOrders = await pool.query('SELECT * FROM orders');
+        res.json(allOrders.rows);
+      } catch (err) {
+          console.error(err.message);
+      }
+});
+
+
+
+//  Foreign KEY
+// INSERT INTO articles( article_name, article_content, category_id, img, url ) 
+// VALUES( ?, ?, ( SELECT category_id FROM categories WHERE categories.category_id = ? ), ?, ?) 
 
 app.listen(5000, () => {
     console.log("server has started on PORT 5000");
 });
+
+// INSERT INTO orders(note,estimated_price,is_guaranteed,created_by,customer_id,status_id)
+// VALUES('first order',123,false,
+// 	(SELECT id FROM employees WHERE (email = 'mike@email.com')), 
+// 	   1,
+// 	(SELECT id FROM status WHERE (abbr = 'NS') OR (status_name = 'Not Started'))
+// 	  )
