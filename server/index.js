@@ -22,6 +22,7 @@ app.post('/admin/employees', async (req,res) =>{
         console.error(err.message);
     }
 });
+
 // Get all employees
 app.get('/admin/employees', async (req,res) => {
     try {
@@ -31,6 +32,7 @@ app.get('/admin/employees', async (req,res) => {
           console.error(err.message);
       }
 });
+
 // Get employee by id
 app.get('/admin/employees/:id', async(req,res) => {
     try {
@@ -42,7 +44,7 @@ app.get('/admin/employees/:id', async(req,res) => {
     }
 });
 
-// Update employee
+// Update employee by id
 app.put('/admin/employees/:id', async (req,res) =>{
     try {
         const { first_name, last_name, role, email, password} = req.body;
@@ -66,6 +68,7 @@ app.get('/customers', async (req,res) => {
           console.error(err.message);
       }
 });
+
 // Create customer
 app.post('/customers', async (req,res) =>{
     try {
@@ -80,12 +83,28 @@ app.post('/customers', async (req,res) =>{
         console.error(err.message);
     }
 });
+
 // Get customer by id
 app.get('/customers/:id', async(req,res) => {
     try {
         const {id} = req.params;
         const customer = await pool.query('SELECT * FROM customers WHERE id = $1', [id]);
         res.json(customer.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// Update customer by id
+app.put('/customers/:id', async (req,res) =>{
+    try {
+        const { address, city, email, first_name, last_name, phone, postal_code, province, notes } = req.body;
+        const updatedCustomer = await pool.query(
+            'INSERT INTO customers (address, city, email, first_name, last_name, phone, postal_code, province, notes) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
+            [address, city, email, first_name, last_name, phone, postal_code, province, notes]
+        );
+        console.log('Success, customer updated!');
+        res.json(updatedCustomer.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
@@ -116,7 +135,6 @@ app.post('/orders', async (req,res) =>{
         console.error(err.message);
     }
 });
-
 
 
 app.listen(5000, () => {
