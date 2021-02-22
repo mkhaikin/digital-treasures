@@ -47,10 +47,12 @@ app.get('/admin/employees/:id', async(req,res) => {
 // Update employee by id
 app.put('/admin/employees/:id', async (req,res) =>{
     try {
+        const {id} = req.params;
         const { first_name, last_name, role, email, password} = req.body;
+        
         const updatedUser = await pool.query(
-            'INSERT INTO employees (first_name, last_name, role, email, password) VALUES($1,$2,$3,$4,$5) RETURNING *',
-            [first_name, last_name, role, email, password]
+            'UPDATE employees SET first_name = $1, last_name = $2, role = $3, email = $4, password = $5  WHERE id = $6 RETURNING *',
+            [first_name, last_name, role, email, password, id]
         );
         console.log('Success, employee updated!');
         res.json(updatedUser.rows[0]);
@@ -100,7 +102,7 @@ app.put('/customers/:id', async (req,res) =>{
     try {
         const { address, city, email, first_name, last_name, phone, postal_code, province, notes } = req.body;
         const updatedCustomer = await pool.query(
-            'INSERT INTO customers (address, city, email, first_name, last_name, phone, postal_code, province, notes) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
+            'UPDATE customers (address, city, email, first_name, last_name, phone, postal_code, province, notes) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *',
             [address, city, email, first_name, last_name, phone, postal_code, province, notes]
         );
         console.log('Success, customer updated!');
