@@ -64,7 +64,7 @@ app.put('/admin/employees/:id', async (req,res) =>{
 // Get all customers
 app.get('/customers', async (req,res) => {
     try {
-        const allCustomers = await pool.query('SELECT * FROM customers');
+        const allCustomers = await pool.query('SELECT * FROM customers ORDER BY id DESC');
         res.json(allCustomers.rows);
       } catch (err) {
           console.error(err.message);
