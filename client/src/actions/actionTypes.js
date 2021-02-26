@@ -1,1 +1,2 @@
+export const SELECT_EMPLOYEE = 'SELECT_EMPLOYEE';
 export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
