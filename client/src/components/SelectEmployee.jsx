@@ -52,7 +52,7 @@ const SelectEmployee = () => {
                     value={description} 
                     onChange={e => setDescription(e.target.value)}
                 /> */}
-                <button className="btn btn-success">Find</button>
+                <button className="btn btn-success">Search</button>
             </form>
         </Fragment>
     );

@@ -1,8 +1,6 @@
 import { SELECT_EMPLOYEE } from "../actions/actionTypes";
 
-
-
-const selectEmployeeReducer = (state = {}, action) => {
+const fetchEmployeeReducer = (state = {}, action) => {
     switch(action.type){
         case SELECT_EMPLOYEE :
             console.log("Select Employee");
@@ -13,4 +11,4 @@ const selectEmployeeReducer = (state = {}, action) => {
     }
 }
 
-export default selectEmployeeReducer;
+export default fetchEmployeeReducer;
