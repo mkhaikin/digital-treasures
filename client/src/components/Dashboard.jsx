@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import SelectEmployee from './SelectEmployee';
 
-const Dashboards = () => {
+const Dashboard = () => {
 
     const [customers, setCustomers] = useState([]);
     const getCustomers = async () => {
@@ -60,4 +60,4 @@ const Dashboards = () => {
     );
 };
 
-export default Dashboards;
+export default Dashboard;
