@@ -44,6 +44,16 @@ app.get('/admin/employees/:id', async(req,res) => {
     }
 });
 
+app.get('/admin/employees/:lastName', async(req,res) => {
+    try {
+        const {lastName} = req.params;
+        const user = await pool.query('SELECT * FROM employees WHERE last_name = $1', [lastName]);
+        res.json(user.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
 // Update employee by id
 app.put('/admin/employees/:id', async (req,res) =>{
     try {
