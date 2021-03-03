@@ -11,7 +11,7 @@ const SelectEmployee = () => {
         e.preventDefault();
         if(!lastName) return;
         dispatch(selectEmployee(lastName));
-    }
+    }   
 
     return (
         <Fragment>
