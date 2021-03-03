@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import SelectEmployee from './SelectEmployee';
+// import SelectEmployee from './SelectEmployee';
+import PageTitle from './PageTitle.jsx';
 import Comments from './Comments.jsx';
 
 const Main = () => {
@@ -16,6 +17,7 @@ const Main = () => {
             console.error(err.message)
         }
     };
+    
     useEffect(() => {
         getEmployees()
     }, []);
@@ -23,10 +25,11 @@ const Main = () => {
     return (
         <Fragment>
             <div className="container-fluid main">
-                <h2>Main</h2>
+                <PageTitle/>
                 <table className="table mt-5 text-center">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Role</th>
                             <th>Email</th>
@@ -39,8 +42,9 @@ const Main = () => {
                             <td>john@example.com</td>
                         </tr> 
                     */}
-                        {employees.map(employee => (
-                            <tr key={employee.todo_id}>
+                        {employees.map((employee,i) => (
+                            <tr key={i+1}>
+                                <td>{i+1}</td>
                                 <td>{employee.first_name + ' ' + employee.last_name}</td>
                                 <td>{employee.role}</td>
                                 <td>{employee.email}</td>
