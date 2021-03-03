@@ -35,6 +35,7 @@
 }
 .menu a.nav-link:hover {
   color: burlywood;
+  cursor: pointer;
 }
 a.nav-link.disabled {
   color: #283234;
@@ -42,8 +43,6 @@ a.nav-link.disabled {
 a.nav-link.disabled:hover {
   color: #283234;
 }
-
-
 
 .main {
   padding-top: 1%;
@@ -55,12 +54,14 @@ a.nav-link.disabled:hover {
   font-size: calc(12px);
   color: #282c34;
 }
-
 .comments {
-  margin-top: 20px;
+  margin: 20px 0 0 0;
+  border-top: grey 2px solid;
+  padding: 5px 0;
   display: flex;
   flex-direction: column;
   flex-shrink: 10;
+  align-items: top;
 }
 .footer {
   background-color: #282c34;
