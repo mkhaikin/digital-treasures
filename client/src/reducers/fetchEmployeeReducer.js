@@ -1,12 +1,11 @@
 import { SELECT_EMPLOYEE } from "../actions/actionTypes";
 
+
 const fetchEmployeeReducer = (state = {}, action) => {
     switch(action.type){
         case SELECT_EMPLOYEE :
-            console.log("Select Employee");
-            return state;
+            return action.payload;
         default: 
-            console.log("default");    
             return state;
     }
 }
