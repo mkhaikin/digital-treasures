@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment} from 'react';
 import Menu from './Menu.jsx';
 import Main from './Main.jsx';
 
