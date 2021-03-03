@@ -5,12 +5,12 @@ import { createStore, applyMiddleware } from 'redux' // Combine reducers & add M
 import thunk from 'redux-thunk';
 
 import './index.css';
-import App from './App';
+import App from './App.js';
 
 import rootReducer from "./rootReducer";
 
 const store = createStore(
-  rootReducer, 
+  rootReducer,
   applyMiddleware(thunk)
 );
 
@@ -18,7 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
         <App/>
-      </Provider>,
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
