@@ -1,4 +1,5 @@
 // Menu 
+export const SELECT_EMPLOYEES = 'SELECT_EMPLOYEES';
 export const SELECT_CUSTOMERS = 'SELECT_CUSTOMERS';
 export const SELECT_ORDERS = 'SELECT_ORDERS';
 
