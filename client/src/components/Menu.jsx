@@ -1,7 +1,22 @@
-import React, {Fragment, useEffect, useState } from 'react';
-import Auth from './Auth.jsx';
+import React, { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { selectEmployees, selectCustomers, selectOrders } from '../actions/menuActions';
+// import Auth from './Auth.jsx';
 
 const Menu = () => {
+    const dispatch = useDispatch();
+
+    const employeesLink = () => {
+        dispatch(selectEmployees());
+    }
+    
+    const customersLink = () => {
+        dispatch(selectCustomers());
+    }
+
+    const ordersLink = () => {
+        dispatch(selectOrders());
+    }
 
     return (
         <Fragment>
@@ -10,15 +25,15 @@ const Menu = () => {
                 <p>logged in as: Mike</p>
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <a className="nav-link disabled" href="#">Admin</a>
+                        <button className="nav-link" href="#" onClick={employeesLink}>Admin</button>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Customers</a>
+                        <button className="nav-link" href="#" onClick={customersLink}>Customers</button>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Orders</a>
+                        <button className="nav-link" href="#" onClick={ordersLink}>Orders</button>
                     </li>
-                    
+
                 </ul>
             </div>
         </Fragment>
