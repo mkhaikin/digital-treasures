@@ -12,7 +12,6 @@ const PageTitle = () => {
             : title === 'Orders' ? "Orders"
             : "Dashboard"
             }</h2>
-       
     );
 };
 
