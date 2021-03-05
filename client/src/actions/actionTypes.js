@@ -1,8 +1,9 @@
 // Menu 
-export const SELECT_EMPLOYEES = 'SELECT_EMPLOYEES';
-export const SELECT_CUSTOMERS = 'SELECT_CUSTOMERS';
-export const SELECT_ORDERS = 'SELECT_ORDERS';
+export const MENU_EMPLOYEES = 'MENU_EMPLOYEE';
+export const MENU_CUSTOMERS = 'MENU_CUSTOMERS';
+export const MENU_ORDERS = 'MENU_ORDERS';
 
-// Employee
-export const SELECT_EMPLOYEE = 'SELECT_EMPLOYEE';
-export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
+// Employees actions
+export const SELECT_ALL_EMPLOYEES = 'SELECT_ALL_EMPLOYEES';
+export const SELECT_ALL_CUSTOMERS = 'SELECT_ALL_CUSTOMERS';
+export const SELECT_ALL_ORDERS = 'SELECT_ALL_ORDERS';
