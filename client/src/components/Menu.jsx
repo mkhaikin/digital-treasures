@@ -1,21 +1,21 @@
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
-import { selectEmployees, selectCustomers, selectOrders } from '../actions/menuActions';
+import { menuEmployees, menuCustomers, menuOrders } from '../actions/menuActions';
 // import Auth from './Auth.jsx';
 
 const Menu = () => {
     const dispatch = useDispatch();
 
     const employeesLink = () => {
-        dispatch(selectEmployees());
+        dispatch(menuEmployees());
     }
     
     const customersLink = () => {
-        dispatch(selectCustomers());
+        dispatch(menuCustomers());
     }
 
     const ordersLink = () => {
-        dispatch(selectOrders());
+        dispatch(menuOrders());
     }
 
     return (

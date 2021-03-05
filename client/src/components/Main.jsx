@@ -1,60 +1,28 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 // import SelectEmployee from './SelectEmployee';
-import PageTitle from './PageTitle.jsx';
-import Comments from './Comments.jsx';
-
+import { useSelector } from 'react-redux';
+import Employees from './Employees.jsx';
+import Customers from './Customers.jsx';
+import Orders from './Orders.jsx';
+import Report from './Report.jsx';
 const Main = () => {
 
-    const [employees, setEmployees] = useState([]);
-
-    const getEmployees = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/admin/employees');
-            const jsonData = await response.json();
-            // console.log(jsonData);
-            setEmployees(jsonData);
-        } catch (err) {
-            console.error(err.message)
-        }
-    };
-    
-    useEffect(() => {
-        getEmployees()
-    }, []);
+    const datas = useSelector((state) => state.menu);
+    const title = datas.title;
 
     return (
         <Fragment>
             <div className="container-fluid main">
-                <PageTitle/>
-                <table className="table mt-5 text-center">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr> 
-                    */}
-                        {employees.map((employee,i) => (
-                            <tr key={i+1}>
-                                <td>{i+1}</td>
-                                <td>{employee.first_name + ' ' + employee.last_name}</td>
-                                <td>{employee.role}</td>
-                                <td>{employee.email}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <Comments/>
+
+                {   
+                    title === 'Employees' ? <Employees/>
+                    : title === 'Customers' ? <Customers/>
+                    : title === 'Orders' ? <Orders/>
+                    : <Report/>
+                }
+ 
             </div>
-            
+
         </Fragment>
     );
 };
