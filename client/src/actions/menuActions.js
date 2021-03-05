@@ -1,26 +1,34 @@
-import { SELECT_CUSTOMERS, SELECT_ORDERS, SELECT_EMPLOYEES } from "./actionTypes";
+import { MENU_EMPLOYEES, MENU_CUSTOMERS, MENU_ORDERS } from "./actionTypes";
+import Axios from 'axios';
 
-export const selectEmployees = () => { 
-    console.log('selectEmployees');
-    return {
-        type: SELECT_EMPLOYEES,
-        payload: 'Employees'
+export const menuEmployees = () => async (dispatch, getState) => {
+        const response = await Axios.get("http://localhost:5000/admin/employees");
+        const data = response.data;
+        console.log(data);
+        dispatch({
+            type: MENU_EMPLOYEES,
+            title: "Employees",
+            payload: data
+        })
     };
-};
 
-export const selectCustomers = () => { 
-    console.log('selectCustomers');
+export const menuCustomers = () => async (dispatch, getState) => {
+        const response = await Axios.get("http://localhost:5000/customers");
+        const data = response.data;
+        console.log(data);
+        dispatch({
+            type: MENU_CUSTOMERS,
+            title: "Customers",
+            payload: data
+        })
+    } 
+
+
+export const menuOrders = () => { 
+    console.log('menuOrders');
+
     return {
-        type: SELECT_CUSTOMERS,
-        payload: 'Customers'
-    };
-};
-
-export const selectOrders = () => { 
-    console.log('selectOrders');
-
-    return {
-        type: SELECT_ORDERS,
-        payload: 'Orders'
+        type: MENU_ORDERS,
+        title: 'Orders'
     };
 };
