@@ -1,27 +1,29 @@
-import { SELECT_CUSTOMERS, SELECT_ORDERS, SELECT_EMPLOYEES } from "../actions/actionTypes";
+import { MENU_EMPLOYEES, MENU_CUSTOMERS, MENU_ORDERS } from "../actions/actionTypes";
 
 const initialState = {
     title:  ' ',
+    data: {}
 }
 
 const menuReducer = (state = initialState, action) => {
     switch(action.type){
-        case SELECT_EMPLOYEES :
+        case MENU_EMPLOYEES :
             return {
-               title : action.payload
+               title : action.title,
+               data: action.payload
             };
-        case SELECT_CUSTOMERS :
+        case MENU_CUSTOMERS :
             return {
-                title : action.payload
-        };  
-        case SELECT_ORDERS :
+                title : action.title,
+                data: action.payload
+            };  
+        case MENU_ORDERS :
             return {
-                title: action.payload
+                title : action.title
             };
         default: 
             return state;
     }
-
 }
 
 export default menuReducer;
