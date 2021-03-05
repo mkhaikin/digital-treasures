@@ -45,7 +45,6 @@ const Main = () => {
                         {employees.map((employee,i) => (
                             <tr key={i+1}>
                                 <td>{i+1}</td>
-                                {console.log([Object.keys(employee)[1]])}
                                 <td>{Object.keys(employee)[1]
                                  + ' ' + employee.last_name}</td>
                                 <td>{employee.role}</td>
