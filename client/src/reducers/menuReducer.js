@@ -9,11 +9,13 @@ const menuReducer = (state = initialState, action) => {
     switch(action.type){
         case MENU_EMPLOYEES :
             return {
+                ...state,
                title : action.title,
                data: action.payload
             };
         case MENU_CUSTOMERS :
             return {
+                ...state,
                 title : action.title,
                 data: action.payload
             };  

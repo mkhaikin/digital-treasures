@@ -4,7 +4,6 @@ import Axios from 'axios';
 export const menuEmployees = () => async (dispatch, getState) => {
         const response = await Axios.get("http://localhost:5000/admin/employees");
         const data = response.data;
-        console.log(data);
         dispatch({
             type: MENU_EMPLOYEES,
             title: "Employees",
@@ -15,7 +14,6 @@ export const menuEmployees = () => async (dispatch, getState) => {
 export const menuCustomers = () => async (dispatch, getState) => {
         const response = await Axios.get("http://localhost:5000/customers");
         const data = response.data;
-        console.log(data);
         dispatch({
             type: MENU_CUSTOMERS,
             title: "Customers",
@@ -32,3 +30,4 @@ export const menuOrders = () => {
         title: 'Orders'
     };
 };
+

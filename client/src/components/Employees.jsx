@@ -1,15 +1,23 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 // import SelectEmployee from './SelectEmployee';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PageTitle from './PageTitle.jsx';
+
+import EditEmployee from './EditEmployee.jsx';
+
 
 const Employees = () => {
 
+    const dispatch = useDispatch();
     const datas = useSelector((state) => state.menu);
     const title = datas.title;
     const keys = datas.data[0];
     const employees = datas.data
-    
+
+    const addEmployeeBtn = () => {
+        return ;
+    }
+
     return (
         <Fragment>
             <PageTitle/>
@@ -24,28 +32,21 @@ const Employees = () => {
                                 : ""
                             }
                         </tr>
-                        {employees.map((employee,i) => (
-                            <tr key={i+1}>
-                                <td>{i+1}</td>
-                                <td>{ employee.first_name }</td>
-                                <td>{ employee.last_name }</td>
-                                <td>{ employee.email }</td>
-                                <td>{ employee.password }</td>
-                                <td>{ employee.role }</td>
-
-                            </tr>
-                        ))}
+                        
                     </thead>
                     <tbody>
-                        {/* {datas.map((data,i) => (
+                         
+                         {employees.map((employee,i) => (
                             <tr key={i+1}>
                                 <td>{i+1}</td>
-                                <td>{data.first_name
-                                 + ' ' + data.last_name}</td>
-                                <td>{data.role}</td>
-                                <td>{data.email}</td>
+                                <td>{employee.first_name
+                                 + ' ' + employee.last_name}</td>
+                                <td>{employee.role}</td>
+                                <td>{employee.email}</td>
+                                <td><EditEmployee employee={employee}/></td>
                             </tr>
-                        ))} */}
+                        ))}
+                        
                     </tbody>
                 </table>
     </Fragment>
