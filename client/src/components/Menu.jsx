@@ -22,7 +22,6 @@ const Menu = () => {
         <Fragment>
             <div className="container menu">
                 <h2>Menu </h2>
-                <p>logged in as: Mike</p>
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <button className="nav-link" href="#" onClick={employeesLink}>Admin</button>
