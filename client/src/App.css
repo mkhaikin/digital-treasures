@@ -2,11 +2,15 @@
   background-color: #282c34;
   min-height: 7vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: left;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.header p > span {
+  font-size: calc(40px);
 }
 
 .dashboard {
@@ -54,6 +58,8 @@ a.nav-link.disabled:hover {
   font-size: calc(12px);
   color: #282c34;
 }
+
+
 .comments {
   margin: 20px 0 0 0;
   /* border-top: grey 2px solid; */
