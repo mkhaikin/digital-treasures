@@ -7,3 +7,7 @@ export const MENU_ORDERS = 'MENU_ORDERS';
 export const ADD_EMPL_BTN = 'ADD_EMPL_BTN';
 export const SELECT_ALL_CUSTOMERS = 'SELECT_ALL_CUSTOMERS';
 export const SELECT_ALL_ORDERS = 'SELECT_ALL_ORDERS';
+
+// Auth Action
+export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';
